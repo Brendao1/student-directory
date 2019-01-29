@@ -24,13 +24,13 @@ def print_header
 puts "---------------"
 end
 
-# Question 3: print only students whose name is shorter than 12 characters.
+# Question 4: Rewrite the each() method that prints all students using 
+# while or until control flow methods (Loops).
 def print(students)
-  students.each_with_index do |student, index|
-      if student[:name].length < 12 
-      puts "#{index+1} #{student[:name]} (#{student[:cohort]} cohort)"
-      else
-     end
+  i = 0
+ for i in 0..students.length-1
+    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)"
+    i += 1
   end
 end
 
