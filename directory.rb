@@ -1,15 +1,19 @@
 def input_students
     puts "Please enter the names of the students"
     puts "To finish, just hit return twice"
-    # create an empty array
     students = []
-    # get the first name
     name = gets.chomp
     # while the name is not empty, repeat this code
     while !name.empty? do
-        # add the student has to the array
-        students << {name: name, cohort: :november}
+    puts "Student's nationality"
+    nationality = gets.chomp
+    puts "Student's date of birth"
+    dob = gets.chomp
+
+# Question 5: Adding more info
+        students << {name: name, cohort: :november, dob: dob, nationality: nationality}
         puts "Now we have #{students.count} students"
+        puts "Enter another student"
         # get another name from the user
         name = gets.chomp
     end
@@ -24,15 +28,12 @@ def print_header
 puts "---------------"
 end
 
-# Question 4: Rewrite the each() method that prints all students using 
-# while or until control flow methods (Loops).
+# Question 5: Printing the additional info
 def print(students)
-  i = 0
- for i in 0..students.length-1
-    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)"
-    i += 1
+  students.each do |student|
+      puts "#{student[:name]}  #{student[:nationality]} #{student[:dob]} (#{student[:cohort]} cohort)"
   end
-end
+ end
 
 def print_footer(students)
     puts "Overall we have #{students.count} great students"
