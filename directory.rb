@@ -24,9 +24,16 @@ def print_header
 puts "---------------"
 end
 
+# Question 2: print names starting with a specific letter
 def print(students)
   students.each do |student|
+      # take student[:name]
+      # split it into an array
+      # find first letter
+      # if letter = "A", then print
+      if student[:name][0] == "M"
       puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    end
   end
 end
 
