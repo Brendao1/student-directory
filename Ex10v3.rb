@@ -11,22 +11,24 @@ def input_students
         puts "Now we have #{@students.count} students"
         name = gets.chomp 
     end
-    @students
+    @students   # THIS CAN COME OUT
 end
 
-@students = input_students
+@students = input_students # THIS CAN COME OUT
 
 def print_header
     puts "The students of Villains Academy"
     puts "---------------"
 end
 
+# MOVE THIS DOWN, AFTER INTERACTIVE MENU
 def print(students)
   @students.each_with_index do |student, index|
       puts "#{index+1} #{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
+# MOVE THIS DOWN, AFTER INTEACTIVE MENU
 def print_footer(students)
     puts "Overall we have #{@students.count} great students"
 end
@@ -37,23 +39,6 @@ def interactive_menu
     process(gets.chomp)
   end
 end
-
-# THIS IS WHAT WE REPLACED WITH THE DEF PROCESS METHOD (BELOW)
-=begin
-    case selection
-    when "1"
-      @students = input_students
-    when "2"
-    show_students
-    when "9"
-      exit
-    else
-      puts "I don't know what you meant, try again"
-    end
-  end
-end
-=end
-
 
 def process(selection)
   case selection
@@ -68,9 +53,6 @@ def process(selection)
   end
 end
 
-
-
-
 def print_menu
   puts "1. Input the students"
   puts "2. Show the students"
@@ -80,12 +62,12 @@ end
 
 def show_students
   print_header
-  print(@students)
-  print_footer(@students)
+  print(@students)   # @STUDENTS CAN COME OUT
+  print_footer(@students)  #@STUDENTS CAN COME OUT
 end
 
 
 interactive_menu
 print_header
-print(students)
-print_footer(students)
+print(students)   # STUDENTS CAN COME OUT
+print_footer(students) # STUDENTS CAN COME OUT
