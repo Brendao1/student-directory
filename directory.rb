@@ -1,23 +1,23 @@
+# Question 7: Asking for both the name and the cohort? What if one of the values is empty? 
+# Can you supply a default value? The input will be given to you as a string? 
+# How will you convert it to a symbol? What if the user makes a typo?
 def input_students
-    puts "Please enter the names of the students"
+    puts "Enter the name of the student"
     puts "To finish, just hit return twice"
     students = []
     name = gets.chomp
-    # while the name is not empty, repeat this code
     while !name.empty? do
-    puts "Student's nationality"
-    nationality = gets.chomp
-    puts "Student's date of birth"
-    dob = gets.chomp
-
-# Question 5: Adding more info
-        students << {name: name, cohort: :november, dob: dob, nationality: nationality}
-        puts "Now we have #{students.count} students"
-        puts "Enter another student"
+        puts "Cohort?"
+        cohort = gets.chomp
+    if cohort == ""
+        cohort = "tbc"
+    end
+        # add the student has to the array
+        students << {name: name, cohort: cohort.to_sym}
+        puts "Now we have #{students.count} students. Next student"
         # get another name from the user
         name = gets.chomp
     end
-    # return the array of students
     students
 end
 
