@@ -34,9 +34,7 @@ def print_footer(students)
 end
 
 def interactive_menu
-  # @students = []
   loop do
-
     print_menu
     selection = gets.chomp
 
@@ -44,7 +42,6 @@ def interactive_menu
     when "1"
       @students = input_students
     when "2"
-
     show_students
     when "9"
       exit
