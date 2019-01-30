@@ -28,12 +28,13 @@ def print_header
 puts "---------------"
 end
 
-# Question 5: Printing the additional info
+# Question 6: Research how the method center() of the String class works. 
+# Use it in your code to make the output beautifully aligned.
 def print(students)
-  students.each do |student|
-      puts "#{student[:name]}  #{student[:nationality]} #{student[:dob]} (#{student[:cohort]} cohort)"
+  students.each_with_index do |student, index|
+      puts "#{index+1} #{student[:name]}  "+ "#{student[:nationality]}".ljust(15) + " #{student[:dob]}".ljust(15) + "(#{student[:cohort]} cohort)".rjust(10)
   end
- end
+end
 
 def print_footer(students)
     puts "Overall we have #{students.count} great students"
