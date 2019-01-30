@@ -7,6 +7,7 @@ def input_students
 # (although it will require passing some arguments).
 #
 # string.rstrip
+# string.lstrip
 # string.slice[string.string.length-1]
 # string.strip!
 #
