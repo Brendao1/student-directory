@@ -41,8 +41,6 @@ end
 
 
 def add_student
-    #puts "Please enter the names of the students"
-    #puts "To finish, just hit return twice"
     name = STDIN.gets.chomp
     while !name.empty? do
         @students << {name: name, cohort: :november}
@@ -83,12 +81,14 @@ def save_students
   file.close
 end
 
+# To load students.csv by default, we change the 
+# load_students method
+
 def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
-    @students << {name: name, cohort: cohort.to_sym}    ### THIS ONE
-    #@students = add_student     # calling the add_student
+    @students << {name: name, cohort: cohort.to_sym}  ##### CAN WE CHANGE THIS ONE?
   end
   file.close
 end
