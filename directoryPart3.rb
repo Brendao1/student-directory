@@ -47,6 +47,7 @@ def add_student
         puts "Now we have #{@students.count} students"
         name = STDIN.gets.chomp
     end
+    puts "Input students successful! "    ### HERE
 end
 
 
@@ -78,6 +79,7 @@ def save_students
     csv_line = student_data.join(",")
     file.puts csv_line
   end
+  puts "Student names saved "
   file.close
 end
 
@@ -88,6 +90,7 @@ def load_students
   name, cohort = line.chomp.split(',')
     @students << {name: name, cohort: cohort.to_sym}  ##### CAN WE CHANGE THIS ONE?
   end
+    puts "Students have been loaded. Select 2 to view " 
   file.close
 end
 	
