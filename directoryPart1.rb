@@ -13,17 +13,23 @@ def input_students
         cohort = add_cohort
         students << {name: name, nationality: nationality, cohort: cohort.to_sym}
         if students.count == 1
-            puts "Now we have #{students.count} student. Next student"
+            puts "Now we have #{students.count} student. Next student."
         else
-            puts "Now we have #{students.count} students. Next student"
+            puts "Now we have #{students.count} students. Next student. "
         end
-        # get another name from the user. Still using chomp in this instance
-        name = gets.chomp
+        name = gets.rstrip
     end
     students
 end
 
-
+def print_loop(students)
+  i = 0
+ for i in 0..students.length-1
+    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)"
+    i += 1
+  end
+end
+    
 def add_cohort
     cohort_arr = {1 => :January, 2 => :February, 3 => :March, 4 => :April, 5 => :May, 
     6 => :June, 7 => :July, 8 => :August, 9 => :Septmeber, 10 => :October, 11 => :November, 12 => :December, 13 => :tbc}
@@ -64,8 +70,6 @@ def print_by_cohort(students)
     end
 end
 
-
-
 def print_by_cohort(students)
       puts "Enter the month to group by: ".center(@center)
       month = gets.chomp.capitalize.to_sym
@@ -84,6 +88,7 @@ end
 
 print_header
 print(students)
+print_loop(students)
 print_footer(students)
 print_by_cohort(students)
 
