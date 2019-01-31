@@ -47,7 +47,7 @@ def add_student
         puts "Now we have #{@students.count} students"
         name = STDIN.gets.chomp
     end
-    puts "Input students successful! "    ### HERE
+    puts "Input students successful3"    ### HERE
 end
 
 
@@ -73,24 +73,28 @@ def print_footer
 end
 
 def save_students
-  file = File.open("students.csv", "w")
+  puts "Which file are we saving to?"
+  filename = gets.chomp
+  file = File.open(filename, "w")
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
   end
-  puts "Student names saved "
+  puts "Student names saved to #{filename} "
   file.close
 end
 
 # To load students.csv by default, we change the load_students method
 def load_students
-  file = File.open("students.csv", "r")
+  puts  "Which file are we loading?"
+  filename = gets.chomp
+  file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     @students << {name: name, cohort: cohort.to_sym}  ##### CAN WE CHANGE THIS ONE?
   end
-    puts "Students have been loaded. Select 2 to view " 
+    puts "Students from #{filename} have been loaded. Select 2 to view " 
   file.close
 end
 	
