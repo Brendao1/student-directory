@@ -81,11 +81,9 @@ def save_students
   file.close
 end
 
-# To load students.csv by default, we change the 
-# load_students method
-
-def load_students(filename = "students.csv")
-  file = File.open(filename, "r")
+# To load students.csv by default, we change the load_students method
+def load_students
+  file = File.open("students.csv", "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     @students << {name: name, cohort: cohort.to_sym}  ##### CAN WE CHANGE THIS ONE?
