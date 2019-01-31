@@ -1,5 +1,4 @@
 @center = 100
-#@students = []
 
 def input_students
     puts "Enter the name of the student".center(@center)
@@ -46,40 +45,24 @@ def print_header
 end
 
 def print(students)
-  students.each_with_index do |student, index|
+    if !students.empty?
+      students.each_with_index do |student, index|
       puts "#{index+1} #{student[:name]} #{student[:nationality]} #{student[:dob]} (#{student[:cohort]} cohort)".center(@center)
+    #else 
+     # puts "There are no students in the directory. ".center(@center)
+    end
   end
 end
 
-=begin
 def print_by_cohort(students)
-    puts "Enter the month to group by: ".center(@center)
-    if !students.empty?
-      cohorts = students.map
-      sorted_by_cohort = {}
-      month = gets.strip.to_sym
-      cohorts.each do |student|
-        cohort = student[:cohort]
-        name = student[:name]
-        if sorted_by_cohort[cohort] == nil
-            sorted_by_cohort = [name]
-        else
-            sorted_by_cohort[cohort].push(name)
-        end
-      end
-    puts sorted_by_cohort[month]
-  else
-end
-end
-=end    
-
-
-def print_by_cohort(students)
+  if !students.empty?
       puts "Enter the month to group by: ".center(@center)
       month = gets.chomp.capitalize.to_sym
       students.each_with_index {|h,i| puts students[i] if h[:cohort] == month}
+    else
+       puts "There are no students in the directory. ".center(@center)
+    end
 end
-
 
 
 def print_footer(students)
