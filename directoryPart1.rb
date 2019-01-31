@@ -52,7 +52,7 @@ def print(students)
      # puts "There are no students in the directory. ".center(@center)
     end
   end
-endexit
+end
 
 def print_by_cohort(students)
   if !students.empty?
