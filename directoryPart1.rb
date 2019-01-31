@@ -65,6 +65,15 @@ def print_by_cohort(students)
 end
 
 
+
+def print_by_cohort(students)
+      puts "Enter the month to group by: ".center(@center)
+      month = gets.chomp.capitalize.to_sym
+      students.each_with_index {|h,i| puts students[i] if h[:cohort] == month}
+end
+
+
+
 def print_footer(students)
     if students.count == 1
     puts "Overall we have #{students.count} great student".center(@center)
