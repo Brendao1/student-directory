@@ -78,23 +78,38 @@ def print_footer
     puts "Overall we have #{@students.count} great students."
 end
 
-=begin
 def save_students 
   puts "Which file are we saving to?"
   filename = STDIN.gets.chomp
   CSV.open(filename, "w") do |csv|
-    csv_line = CSV.generate do |csv|
+    #CSV.generate do |csv_line|
       @students.each do |student|
        student_data = [student[:name], student[:cohort]]
        csv_line = student_data.join(",")
+       csv.puts csv_line
+      end
+    #end
+  end
+  puts "Student names saved to #{filename}."
+end
+
+def save_students 
+  puts "Which file are we saving to?"
+  filename = STDIN.gets.chomp
+  CSV.open(filename, "w") do |csv|
+    CSV.foreach(filename) do |line|
+      @students.each do |student|
+       student_data = [student[:name], student[:cohort]]
+       line = student_data.join(",")
        csv.puts csv_line
       end
     end
   end
   puts "Student names saved to #{filename}."
 end
-=end
 
+
+=begin WORKING
  def save_students
   puts "Which file are we saving to?"
   filename = STDIN.gets.chomp
@@ -108,6 +123,7 @@ end
   puts "Student names saved to #{filename}."
  # file.close
 end
+=end
 
 # this method will try to load a default file
 =begin
