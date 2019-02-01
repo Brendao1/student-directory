@@ -87,9 +87,9 @@ def save_students
 end
 
 # To load students.csv by default, we change the load_students method
-def load_students
+def load_students(filename = @default)
   puts  "Which file are we loading?"
-  filename = gets.chomp
+  filename = STDIN.gets.chomp
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
@@ -100,15 +100,18 @@ def load_students
 end
 	
 def try_load_students
-  filename = ARGV.first 
-  return if filename.nil? 
-  if File.exists?(filename) 
-    load_students(filename)
+  filename = ARGV.first
+  if filename.nil?
+    filename = @default_file
+    puts "Loaded default file: #{filename}."
+  elsif file.exists?(filename)
+  filename = @loaded_file
+else
+   puts "Sorry, #{filename} doesn't exist."
+   exit
+end
+  load_students(filename)
      puts "Loaded #{@students.count} from #{filename}"
-  else # if it doesn't exist
-    puts "Sorry, #{filename} doesn't exist."
-    exit 
-  end
 end
 
 =begin
