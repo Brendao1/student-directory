@@ -89,7 +89,7 @@ def save_students
     file.puts csv_line
   end
   puts "Student names saved to #{filename}."
- file.close
+ # file.close
 end
 
 # this method will try to load a default file
