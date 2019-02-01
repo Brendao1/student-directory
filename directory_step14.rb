@@ -79,20 +79,6 @@ def print_footer
 end
 
 =begin
-def save_students    ## NOT WORKING
-  puts "Which file are we saving to?"
-  filename = STDIN.gets.chomp
-  CSV.open(filename, "wb") do |file|
-    @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
-   end
-  end
-  puts "Student names saved to #{filename}."
-end
-=end
-
 def save_students 
   puts "Which file are we saving to?"
   filename = STDIN.gets.chomp
@@ -107,24 +93,21 @@ def save_students
   end
   puts "Student names saved to #{filename}."
 end
+=end
 
-
-=begin
  def save_students
   puts "Which file are we saving to?"
   filename = STDIN.gets.chomp
-  CSV.open(filename, "wb") do |file|
-  # file = File.open(filename, "w")
+  # CSV.open(filename, "wb") do |file|
+  file = File.open(filename, "w")
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
   end
-  end
   puts "Student names saved to #{filename}."
  # file.close
 end
-=end
 
 # this method will try to load a default file
 =begin
@@ -171,26 +154,16 @@ end
     puts "#{@students.count} students from #{filename} have been loaded. Select 2 to view. " 
   # file.close
 end
-	
-
-=begin
-File.open('Leo Tolstoy - War and Peace.txt', 'w') do |f|
-f << "Well, Prince, so Genoa and Lucca" 
-f << " are now just family estates of the Buonapartes."
-end
-=end
-
-# csv library: http://ruby-doc.org/stdlib-2.0.0/libdoc/csv/rdoc/CSV.html
-
-
-# The principle of A very basic quine:
-# def quine
-# print "[insert this program's source here]"
-## end
 
 # This quine prints the whole thing out: 
 # def s;"def s;;end;puts s()[0,6]+34.chr+s+34.chr+s()[6,s.length-6]";end;puts s()[0,6]+34.chr+s+34.chr+s()[6,s.length-6]
 
-# quine
+
+# $><<IO.read($0)
+
+# Here is a quine. 
+# It outputs the script I am running it from, namely irb
+eval s=%q(puts"eval s=%q(#{$0})")
+
 try_load_students
 interactive_menu
