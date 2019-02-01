@@ -13,9 +13,11 @@ def input_students
     while !name.empty? do
         puts "What is their nationality"
         nationality = gets.chomp
+        puts "What is their hobby?"
+        hobby = gets.rstrip
         puts "Which cohort?"
         cohort = add_cohort
-        students << {name: name, nationality: nationality, cohort: cohort.to_sym}
+        students << {name: name, nationality: nationality, hobby: hobby, cohort: cohort.to_sym}
         if students.count == 1
             puts "Now we have #{students.count} student. Next student".center(@center)
         else
@@ -30,7 +32,7 @@ end
 # Question 1: Print with index 
 def print(students)
   students.each_with_index do |student, index|
-      puts "#{index+1} #{student[:name]} #{student[:nationality]} #{student[:dob]} (#{student[:cohort]} cohort)".center(@center)
+      puts "#{index+1} #{student[:name]} #{student[:nationality]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
   end
 end
 
@@ -43,7 +45,7 @@ def print_specific_letter(students)
       # find first letter
       # if letter = "A", then print
       if student[:name][0] == "X"
-      puts "#{student[:name]} (#{student[:cohort]} cohort)".center(@center)
+      puts "#{student[:name]} #{student[:nationality]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
     end
   end
 end
@@ -52,7 +54,7 @@ end
 def print_12(students)
   students.each_with_index do |student, index|
       if student[:name].length < 12
-      puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)".center(@center)
+      puts "#{index} #{student[:name]} #{student[:nationality]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
       else
      end
   end
@@ -64,7 +66,7 @@ def print_loop(students)
   i = 0
  if !students.empty?
      while i < students.length do
-    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)".center(@center)
+    puts "#{students[i][:name]} #{students[i][:nationality]} #{students[i][:hobby]} (#{students[i][:cohort]} cohort)".center(@center)
     i += 1
   end
   else
@@ -76,7 +78,9 @@ end
 # See method being called on the code
 
 # Question 7: In the input_students method the cohort value is hard-coded. 
-# How can you ask for both the name and the cohort?
+# How can you ask for both the name and the cohort? If a typo is made, cohort will 
+# default to 'tbc'
+
 def add_cohort
     cohort_arr = {1 => :January, 2 => :February, 3 => :March, 4 => :April, 5 => :May, 
     6 => :June, 7 => :July, 8 => :August, 9 => :Septmeber, 10 => :October, 11 => :November, 12 => :December, 13 => :tbc}
@@ -85,6 +89,7 @@ def add_cohort
     if cohort_arr.has_key?num
         cohort = cohort_arr[num]
        else
+        puts "You made a typo. Default cohort 'tbc' assigned."
         cohort = cohort_arr[13]
     end
     cohort
@@ -101,18 +106,18 @@ end
 def print(students)
     if !students.empty?
       students.each_with_index do |student, index|
-      puts "#{index+1} #{student[:name]} #{student[:nationality]} #{student[:dob]} (#{student[:cohort]} cohort)".center(@center)
+      puts "#{index+1} #{student[:name]} #{student[:nationality]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
       end
     else 
      puts "There are no students in the directory. ".center(@center)
     end
   end
 
-# Question 8: group by cohort
+# Question 8: group by cohort. 
 def print_by_cohort(students)
   if !students.empty?
       puts "Enter the month to group by (eg 'January'): ".center(@center)
-      month = gets.chomp.capitalize.to_sym
+      month = gets.chomp.to_sym
       students.each_with_index {|h,i| puts students[i] if h[:cohort] == month}
     else
        puts "There are no students in the directory. ".center(@center)
