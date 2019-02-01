@@ -126,7 +126,6 @@ end
 =end
 
 # this method will try to load a default file
-=begin
 def try_load_students
   filename = ARGV.first
   if filename.nil?
@@ -138,12 +137,12 @@ def try_load_students
     puts "Sorry, #{filename} doesn't exist."
     exit
   end
-  # load_students(filename)
-  # puts "Loaded #{@students.count} from #{filename}"
+  #load_students(filename)
+  puts "Loaded #{@students.count} from #{filename}"
 end
-=end
 
-
+# ALSO WORKING
+=begin
 def try_load_students
   filename = ARGV.first 
   return if filename.nil? 
@@ -155,8 +154,10 @@ def try_load_students
     exit 
   end
 end
+=end 
 
 # changing load_students to use do...end block
+# def load_students(filename) 
 def load_students(filename = "students.csv")
   puts  "Which file are we loading?"
   filename = STDIN.gets.chomp
@@ -178,7 +179,8 @@ end
 # $><<IO.read($0)
 
 # Here is a quine. 
-# It outputs the script I am running it from, namely irb
+# It outputs the file I am currently running
+
 eval s=%q(puts"eval s=%q(#{$0})")
 
 try_load_students
