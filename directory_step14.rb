@@ -172,10 +172,6 @@ end
   # file.close
 end
 
-# This quine prints the whole thing out: 
-# def s;"def s;;end;puts s()[0,6]+34.chr+s+34.chr+s()[6,s.length-6]";end;puts s()[0,6]+34.chr+s+34.chr+s()[6,s.length-6]
-
-
 # $><<IO.read($0)
 
 # Here is a quine. It outputs the file I am currently running.
