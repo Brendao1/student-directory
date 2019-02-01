@@ -178,8 +178,8 @@ end
 
 # $><<IO.read($0)
 
-# Here is a quine. 
-# It outputs the file I am currently running
+# Here is a quine. It outputs the file I am currently running.
+# $0 is the global variable for the filename
 
 eval s=%q(puts"eval s=%q(#{$0})")
 
