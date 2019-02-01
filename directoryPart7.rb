@@ -127,13 +127,12 @@ end
 def load_students(filename = "students.csv")
   puts  "Which file are we loading?"
   filename = STDIN.gets.chomp
-  File.open(filename, "r") do |file|
-  # CSV.foreach(filename) do |line|
-  #file = File.open(filename, "r")
-  file.readlines.each do |line|
-  name, cohort = line.chomp.split(',')
+  CSV.foreach(filename) do |line|
+  # file.readlines.each do |line|
+  name, cohort = line
+  # name, cohort = line.chomp.split(',')
     add_student(name, cohort)
-  end
+  # end
 end
     puts "#{@students.count} students from #{filename} have been loaded. Select 2 to view. " 
   # file.close
