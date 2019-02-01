@@ -138,7 +138,7 @@ def try_load_students
     exit
   end
   #load_students(filename)
-  puts "Loaded #{@students.count} from #{filename}"
+  puts "Loaded #{@students.count} students from #{filename}"
 end
 
 # ALSO WORKING
@@ -181,7 +181,7 @@ end
 # Here is a quine. It outputs the file I am currently running.
 # $0 is the global variable for the filename
 
-eval s=%q(puts"eval s=%q(#{$0})")
+eval s=%q(puts"filename: (#{$0})")
 
 try_load_students
 interactive_menu
