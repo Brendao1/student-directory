@@ -1,3 +1,5 @@
+require 'csv'
+
 @students = []
 @loaded_file = ""
 @default_file = "students.csv"
@@ -75,6 +77,7 @@ end
 def save_students
   puts "Which file are we saving to?"
   filename = gets.chomp
+  # CSV.open(filename, "wb") do |file|
   file = File.open(filename, "w")
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
@@ -83,6 +86,7 @@ def save_students
   end
   puts "Student names saved to #{filename} "
   file.close
+ #end
 end
 
 # this method will try to load a default file
@@ -121,6 +125,7 @@ def load_students(filename = "students.csv")
   puts  "Which file are we loading?"
   filename = STDIN.gets.chomp
   File.open(filename, "r") do |file|
+    # CSV.foreach(filename) do |line|
   #file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
