@@ -34,7 +34,6 @@ def process(selection)
     end
 end
 
-
 def input_students
     puts "Please enter the names of the students"
     puts "To finish, just hit return twice"
@@ -48,7 +47,7 @@ def add_student
         puts "Now we have #{@students.count} students"
         name = STDIN.gets.chomp
     end
-    puts "Input students successful"
+    puts "Input students successful." + "\n"
 end
 
 
@@ -86,19 +85,8 @@ def save_students
   file.close
 end
 
-# To load students.csv by default, we change the load_students method
-def load_students(filename = @default)
-  puts  "Which file are we loading?"
-  filename = STDIN.gets.chomp
-  file = File.open(filename, "r")
-  file.readlines.each do |line|
-  name, cohort = line.chomp.split(',')
-    @students << {name: name, cohort: cohort.to_sym}  ##### CAN WE CHANGE THIS ONE?
-  end
-    puts "Students from #{filename} have been loaded. Select 2 to view " 
-  file.close
-end
-	
+# this method will try to load a default file
+=begin
 def try_load_students
   filename = ARGV.first
   if filename.nil?
@@ -110,9 +98,37 @@ else
    puts "Sorry, #{filename} doesn't exist."
    exit
 end
-  load_students(filename)
-     puts "Loaded #{@students.count} from #{filename}"
+  # load_students(filename)
+  # puts "Loaded #{@students.count} from #{filename}"
 end
+=end
+
+
+def try_load_students
+  filename = ARGV.first 
+  return if filename.nil? 
+  if File.exists?(filename) 
+    load_students(filename)
+     puts "Loaded #{@students.count} from #{filename}"
+  else # if it doesn't exist
+    puts "Sorry, #{filename} doesn't exist."
+    exit 
+  end
+end
+
+
+def load_students(filename = "students.csv")
+  puts  "Which file are we loading?"
+  filename = STDIN.gets.chomp
+  file = File.open(filename, "r")
+  file.readlines.each do |line|
+  name, cohort = line.chomp.split(',')
+    @students << {name: name, cohort: cohort.to_sym}  ##### NOT CHANGED YET. CAN BE FUTHER REFACTORED BY CHANGING ADD_STUDENTS METHOD AND THEN CALLING IT
+  end
+    puts "#{@students.count} students from #{filename} have been loaded. Select 2 to view. " 
+  file.close
+end
+	
 
 =begin
 File.open('Leo Tolstoy - War and Peace.txt', 'w') do |f|
