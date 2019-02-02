@@ -134,8 +134,8 @@ end
 
 print_header
 print(students)
-print_12(students)
-print_loop(students)
+#print_12(students)
+#print_loop(students)
 print_footer(students)
 print_by_cohort(students)
 print_specific_letter(students)
