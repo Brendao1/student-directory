@@ -1,4 +1,5 @@
 @center = 100
+@months = [:January, :February, :March, :April, :May, :June, :July, :August, :September, :October, :November, :December, :tbc]
 
 def input_students
     puts "Enter the name of the student".center(@center)
@@ -67,9 +68,6 @@ def print_loop(students)
   else
       puts "\nNo students to print"
     end
-#  else
-#    puts "\nNo students to print"
-#  end
 end
 
 # Question 6: using .center() to centre the prompts
@@ -115,7 +113,7 @@ def print(students)
 =begin WORKING
 def print_by_cohort(students)
   if !students.empty?
-      puts "Enter the month to group by (eg 'January'): ".center(@center)
+      puts "Enter the month to group by (eg. 'January', 'February' or 'tbc'): ".center(@center)
       month = gets.chomp.to_sym
       students.each_with_index {|h,i| puts students[i] if h[:cohort] == month}
     else
@@ -132,6 +130,14 @@ def print_by_cohort2(students)
         sorted_by_cohort ={}
         puts "\nEnter the month to group by (eg January): ".center(@center)
         month = gets.strip.to_sym
+
+# if user makes a typo, return the January cohort
+        if !@months.include? month
+        puts "\nInvalid month entered, assuming January cohort. "
+        month = :January
+        students.each_with_index {|h,i| puts students[i] if h[:cohort] == month}
+        else
+    
         cohorts.each do |student|
             cohort = student[:cohort]
             name = student[:name]
@@ -141,6 +147,7 @@ def print_by_cohort2(students)
             sorted_by_cohort[cohort].push[name]
         end
     end
+end
 puts sorted_by_cohort[month]
     puts "\nPrint by cohort command completed."
   else
