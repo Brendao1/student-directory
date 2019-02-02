@@ -70,7 +70,7 @@ def print_loop(students)
     i += 1
   end
   else
-      puts "No students to print"
+      puts "\nNo students to print"
     end
 end
 
@@ -89,7 +89,7 @@ def add_cohort
     if cohort_arr.has_key?num
         cohort = cohort_arr[num]
        else
-        puts "You made a typo. Default cohort 'tbc' assigned."
+        puts "\nYou made a typo. Default cohort 'tbc' assigned."
         cohort = cohort_arr[13]
     end
     cohort
@@ -109,7 +109,7 @@ def print(students)
       puts "#{index+1} #{student[:name]} #{student[:country]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
       end
     else 
-     puts "There are no students in the directory. ".center(@center)
+     puts "\nThere are no students in the directory. ".center(@center)
     end
   end
 
@@ -123,7 +123,7 @@ def print_by_cohort(students)
     else
        puts "There are no students in the directory. ".center(@center)
     end
-    puts "Print by cohort command completed."
+    puts "\nPrint by cohort command completed."
 end
 =end
 
@@ -132,7 +132,7 @@ def print_by_cohort2(students)
     if !students.empty?
         cohorts = students.map
         sorted_by_cohort ={}
-        puts "Enter the month to group by (eg January): ".center(@center)
+        puts "\nEnter the month to group by (eg January): ".center(@center)
         month = gets.strip.to_sym
         cohorts.each do |student|
             cohort = student[:cohort]
@@ -144,7 +144,7 @@ def print_by_cohort2(students)
         end
     end
 puts sorted_by_cohort[month]
-    puts "Print by cohort command completed."
+    puts "\nPrint by cohort command completed."
   else
   end
 end
@@ -152,9 +152,9 @@ end
 
 def print_footer(students)
     if students.count == 1
-    puts "Overall we have #{students.count} great student".center(@center)
+    puts "\nOverall we have #{students.count} great student".center(@center)
     else
-    puts "Overall we have #{students.count} great students".center(@center)    
+    puts "\nOverall we have #{students.count} great students".center(@center)    
     end    
 end
 
@@ -203,7 +203,7 @@ def print(students)
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  puts "\nOverall, we have #{students.count} great students"
 end
 
 
