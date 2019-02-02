@@ -21,7 +21,7 @@ end
 def process(selection)
     case selection
     when "1"
-      input_students   # calling the input students method
+      input_students   # calling the input_students method
     when "2"
       show_students  # calling the show_students method
     when "3"
@@ -38,14 +38,10 @@ end
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
-  # get the first name
   name = STDIN.gets.chomp
-  # while the name is not empty, repeat this code
   while !name.empty? do
-    # add the student hash to the array
     @students << {name: name, cohort: :november}
     puts "Now we have #{@students.count} students"
-    # get another name from the user
     name = STDIN.gets.chomp
   end
       puts "Input students successful."
@@ -82,14 +78,12 @@ def save_students
   puts "Which file are we saving to?"
   filename = STDIN.gets.chomp
   CSV.open(filename, "w") do |csv|
-    #CSV.generate do |csv_line|
       @students.each do |student|
        student_data = [student[:name], student[:cohort]]
        csv_line = student_data.join(",")
        csv.puts csv_line
       end
-    #end
-  end
+   end
   puts "\nStudent names saved to #{filename}."
 end
 
@@ -148,7 +142,7 @@ def try_load_students
   return if filename.nil? 
   if File.exists?(filename) 
     load_students(filename)
-     puts "Loaded #{@students.count} from #{filename}"
+    puts "Loaded #{@students.count} from #{filename}"
   else # if it doesn't exist
     puts "Sorry, #{filename} doesn't exist."
     exit 
@@ -162,11 +156,8 @@ def load_students(filename = "students.csv")
   puts  "Which file are we loading?"
   filename = STDIN.gets.chomp
   CSV.foreach(filename) do |line|
-  # file.readlines.each do |line|
   name, cohort = line
-  # name, cohort = line.chomp.split(',')
-    add_student(name, cohort)
-  # end
+  add_student(name, cohort)
 end
     puts "\n#{@students.count} students from #{filename} have been loaded. Select 2 to view. " 
   # file.close
