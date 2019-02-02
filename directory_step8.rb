@@ -5,11 +5,10 @@ def input_students
     puts "To finish, just hit return twice".center(@center)
     students = []
 
-# Question 10: We've been using the chomp() method to get rid of the last return character. 
+# Question 10: Use an alternative method to chomp(). 
    name = gets.rstrip
    
 # Question 5: Add more information: hobbies, country of birth, height, etc.
-
     while !name.empty? do
         puts "What is their country of birth?"
         country = gets.chomp
@@ -40,10 +39,6 @@ end
 # Question 2: print names starting with a specific letter
 def print_specific_letter(students)
   students.each do |student|
-      # take student[:name]
-      # split it into an array
-      # find first letter
-      # if letter = "A", then print
       if student[:name][0] == "X"
       puts "#{student[:name]} #{student[:country]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
     end
@@ -64,14 +59,14 @@ end
 # while or until control flow methods (Loops).
 def print_loop(students)
   i = 0
- if !students.empty?
-     while i < students.length do
+  if !students.empty?
+    while i < students.length do
     puts "#{students[i][:name]} #{students[i][:country]} #{students[i][:hobby]} (#{students[i][:cohort]} cohort)".center(@center)
     i += 1
-  end
-  else
-      puts "\nNo students to print"
     end
+  else
+    puts "\nNo students to print"
+  end
 end
 
 # Question 6: using .center() to centre the prompts
