@@ -78,19 +78,6 @@ def save_students
   puts "Which file are we saving to?"
   filename = STDIN.gets.chomp
   CSV.open(filename, "w") do |csv|
-      @students.each do |student|
-       student_data = [student[:name], student[:cohort]]
-       csv_line = student_data.join(",")
-       csv.puts csv_line
-      end
-   end
-  puts "\nStudent names saved to #{filename}."
-end
-
-def save_students 
-  puts "Which file are we saving to?"
-  filename = STDIN.gets.chomp
-  CSV.open(filename, "w") do |csv|
     CSV.foreach(filename) do |line|
       @students.each do |student|
        student_data = [student[:name], student[:cohort]]
@@ -102,22 +89,6 @@ def save_students
   puts "\nStudent names saved to #{filename}."
 end
 
-
-=begin WORKING
- def save_students
-  puts "Which file are we saving to?"
-  filename = STDIN.gets.chomp
-  # CSV.open(filename, "wb") do |file|
-  file = File.open(filename, "w")
-  @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
-  end
-  puts "Student names saved to #{filename}."
- # file.close
-end
-=end
 
 # this method will try to load a default file
 def try_load_students
@@ -151,7 +122,6 @@ end
 =end 
 
 # changing load_students to use do...end block
-# def load_students(filename) 
 def load_students(filename = "students.csv")
   puts  "Which file are we loading?"
   filename = STDIN.gets.chomp
@@ -162,13 +132,6 @@ end
     puts "\n#{@students.count} students from #{filename} have been loaded. Select 2 to view. " 
   # file.close
 end
-
-# $><<IO.read($0)
-
-# Here is a quine. It outputs the file I am currently running.
-# $0 is the global variable for the filename
-
-eval s=%q(puts"filename: (#{$0})")
 
 try_load_students
 interactive_menu
