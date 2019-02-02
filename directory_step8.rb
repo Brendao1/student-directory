@@ -11,13 +11,13 @@ def input_students
 # Question 5: Add more information: hobbies, country of birth, height, etc.
 
     while !name.empty? do
-        puts "What is their nationality"
-        nationality = gets.chomp
+        puts "What is their country of birth?"
+        country = gets.chomp
         puts "What is their hobby?"
         hobby = gets.rstrip
         puts "Which cohort?"
         cohort = add_cohort
-        students << {name: name, nationality: nationality, hobby: hobby, cohort: cohort.to_sym}
+        students << {name: name, country: country, hobby: hobby, cohort: cohort.to_sym}
         if students.count == 1
             puts "Now we have #{students.count} student. Next student".center(@center)
         else
@@ -32,7 +32,7 @@ end
 # Question 1: Print with index 
 def print(students)
   students.each_with_index do |student, index|
-      puts "#{index+1} #{student[:name]} #{student[:nationality]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
+      puts "#{index+1} #{student[:name]} #{student[:country]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
   end
 end
 
@@ -45,7 +45,7 @@ def print_specific_letter(students)
       # find first letter
       # if letter = "A", then print
       if student[:name][0] == "X"
-      puts "#{student[:name]} #{student[:nationality]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
+      puts "#{student[:name]} #{student[:country]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
     end
   end
 end
@@ -54,7 +54,7 @@ end
 def print_12(students)
   students.each_with_index do |student, index|
       if student[:name].length < 12
-      puts "#{index} #{student[:name]} #{student[:nationality]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
+      puts "#{index} #{student[:name]} #{student[:country]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
       else
      end
   end
@@ -66,7 +66,7 @@ def print_loop(students)
   i = 0
  if !students.empty?
      while i < students.length do
-    puts "#{students[i][:name]} #{students[i][:nationality]} #{students[i][:hobby]} (#{students[i][:cohort]} cohort)".center(@center)
+    puts "#{students[i][:name]} #{students[i][:country]} #{students[i][:hobby]} (#{students[i][:cohort]} cohort)".center(@center)
     i += 1
   end
   else
@@ -106,7 +106,7 @@ end
 def print(students)
     if !students.empty?
       students.each_with_index do |student, index|
-      puts "#{index+1} #{student[:name]} #{student[:nationality]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
+      puts "#{index+1} #{student[:name]} #{student[:country]} #{student[:hobby]} (#{student[:cohort]} cohort)".center(@center)
       end
     else 
      puts "There are no students in the directory. ".center(@center)
@@ -114,6 +114,7 @@ def print(students)
   end
 
 # Question 8: group by cohort. 
+=begin WORKING
 def print_by_cohort(students)
   if !students.empty?
       puts "Enter the month to group by (eg 'January'): ".center(@center)
@@ -122,7 +123,32 @@ def print_by_cohort(students)
     else
        puts "There are no students in the directory. ".center(@center)
     end
+    puts "Print by cohort command completed."
 end
+=end
+
+# Question 8: group by cohort version 2. 
+def print_by_cohort2(students)
+    if !students.empty?
+        cohorts = students.map
+        sorted_by_cohort ={}
+        puts "Enter the month to group by (eg January): ".center(@center)
+        month = gets.strip.to_sym
+        cohorts.each do |student|
+            cohort = student[:cohort]
+            name = student[:name]
+        if sorted_by_cohort[cohort] == nil
+            sorted_by_cohort[cohort] = [name]
+        else
+            sorted_by_cohort[cohort].push[name]
+        end
+    end
+puts sorted_by_cohort[month]
+    puts "Print by cohort command completed."
+  else
+  end
+end
+
 
 def print_footer(students)
     if students.count == 1
@@ -136,8 +162,9 @@ print_header
 print(students)
 #print_12(students)
 #print_loop(students)
-print_footer(students)
-print_by_cohort(students)
+#print_footer(students)
+print_by_cohort2(students)
+# print_by_cohort(students)
 print_specific_letter(students)
 
 
