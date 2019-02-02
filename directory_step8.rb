@@ -63,6 +63,12 @@ def print_loop(students)
     while i < students.length do
     puts "#{students[i][:name]} #{students[i][:country]} #{students[i][:hobby]} (#{students[i][:cohort]} cohort)".center(@center)
     i += 1
+<<<<<<< HEAD
+=======
+  end
+  else
+      puts "\nNo students to print"
+>>>>>>> ae139f2b585949645927cc90757e575323019e44
     end
   else
     puts "\nNo students to print"
