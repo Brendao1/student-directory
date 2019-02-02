@@ -75,7 +75,7 @@ def print_student_list
 end
 
 def print_footer
-    puts "Overall we have #{@students.count} great students."
+    puts "\nOverall we have #{@students.count} great students."
 end
 
 def save_students 
@@ -90,7 +90,7 @@ def save_students
       end
     #end
   end
-  puts "Student names saved to #{filename}."
+  puts "\nStudent names saved to #{filename}."
 end
 
 def save_students 
@@ -105,7 +105,7 @@ def save_students
       end
     end
   end
-  puts "Student names saved to #{filename}."
+  puts "\nStudent names saved to #{filename}."
 end
 
 
@@ -134,7 +134,7 @@ def try_load_students
   elsif file.exists?(filename)
     filename = @loaded_file
   else
-    puts "Sorry, #{filename} doesn't exist."
+    puts "\nSorry, #{filename} doesn't exist."
     exit
   end
   #load_students(filename)
@@ -168,7 +168,7 @@ def load_students(filename = "students.csv")
     add_student(name, cohort)
   # end
 end
-    puts "#{@students.count} students from #{filename} have been loaded. Select 2 to view. " 
+    puts "\n#{@students.count} students from #{filename} have been loaded. Select 2 to view. " 
   # file.close
 end
 
